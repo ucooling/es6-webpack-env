@@ -1,3 +1,2 @@
-require('assets/css/style.css');
 import * as func from 'components/hello.js';
-console.log(func.square(11));
+console.log("环境搭建成功");

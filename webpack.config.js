@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 var uglifyJsPlugin = require("webpack/lib/optimize/uglifyJsPlugin");
+var ExtractTextPlugin = require('extract-text-webpack-plugin');//css样式从js文件中分离出来,需要通过命令行安装 extract-text-webpack-plugin依赖包
 
 function getEntry(dir) {
     var fs = require('fs');
@@ -34,6 +35,10 @@ module.exports = {
                 test: /\.css$/, loader: 'style-loader!css-loader'
             },
             {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
+            },
+            {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
                 loader: 'babel',
@@ -47,7 +52,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['', '.js', '.json', '.scss'],
+        extensions: ['', '.js', '.json'],
         alias: {
             nm: path.resolve(__dirname, "node_modules"),
             jquery: path.resolve(__dirname, "node_modules/jquery/dist/jquery.min.js"),
@@ -62,6 +67,8 @@ module.exports = {
                 warnings: false
             },
             except: ['$super', '$', 'exports', 'require']    //排除关键字
-        })
+        }),
+
+        new ExtractTextPlugin("styles.css"),
     ]
 };
