@@ -1,4 +1,4 @@
-webpack + es6 + Webpack-dev-server 环境搭建实例
+webpack + es6 + scss + Webpack-dev-server 环境搭建实例
 
 #目录结构说明：
 <pre><code>
@@ -17,13 +17,13 @@ index.html     // 测试文件
 npm install
 
 2、编译文件<br />
-webpack
+npm run build
+
+3、监听修改<br />
+npm run watch
 
 3、打开webpack-dev-server服务<br />
 npm start
 
 4、访问测试地址<br />
 http://localhost:8080/
-
-5、查看编译效果<br />
-直接修改 css|js 文件，测试地址将直接无刷新加载
