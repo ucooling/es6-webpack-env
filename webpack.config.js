@@ -36,7 +36,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
+                loader: ExtractTextPlugin.extract('style', 'css-loader!sass-loader'),
             },
             {
                 test: /\.js$/,
@@ -52,7 +52,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['', '.js', '.json'],
+        extensions: ['', '.js', '.json', ''],
         alias: {
             nm: path.resolve(__dirname, "node_modules"),
             jquery: path.resolve(__dirname, "node_modules/jquery/dist/jquery.min.js"),
@@ -69,6 +69,6 @@ module.exports = {
             except: ['$super', '$', 'exports', 'require']    //排除关键字
         }),
 
-        new ExtractTextPlugin("styles.css"),
+        new ExtractTextPlugin("style.css"),
     ]
 };
