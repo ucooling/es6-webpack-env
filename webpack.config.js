@@ -39,6 +39,22 @@ module.exports = {
                 loader: ExtractTextPlugin.extract('style', 'css-loader!sass-loader'),
             },
             {
+                test   : /\.woff/,
+                loader : 'url?prefix=font/&limit=10000&mimetype=application/font-woff'
+            },
+            {
+                test   : /\.ttf/,
+                loader : 'file?prefix=font/'
+            },
+            {
+                test   : /\.eot/,
+                loader : 'file?prefix=font/'
+            },
+            {
+                test   : /\.svg/,
+                loader : 'file?prefix=font/'
+            },
+            {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
                 loader: 'babel',
